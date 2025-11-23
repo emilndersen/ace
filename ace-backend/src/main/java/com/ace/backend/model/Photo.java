@@ -1,7 +1,11 @@
 package com.ace.backend.model;
 
+import com.ace.backend.model.enums.PhotoCategory;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -38,6 +42,10 @@ public class Photo extends BaseEntity {
 
     @Column(nullable = false)
     private Boolean published;     // true = видно посетителям, false = скрыто
+
+    @Enumerated(EnumType.STRING)
+    private PhotoCategory category;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "profile_id", nullable = false)

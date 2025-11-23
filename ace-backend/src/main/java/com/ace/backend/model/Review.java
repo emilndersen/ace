@@ -1,7 +1,11 @@
 package com.ace.backend.model;
 
+import com.ace.backend.model.enums.ReviewStatus;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -34,6 +38,11 @@ public class Review extends BaseEntity {
 
     @Column
     private Integer rating;         // Оценка (1–5), опционально
+
+    @Enumerated(EnumType.STRING)
+    @Builder.Default
+    private ReviewStatus status = ReviewStatus.PENDING;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "profile_id", nullable = false)

@@ -1,5 +1,9 @@
 package com.ace.backend.model.enums;
 
-public class ReviewStatus {
+public enum ReviewStatus {
+
+    PENDING,
+    APPROVED,
+    REJECTED    
     
 }
